@@ -1,14 +1,15 @@
 {
-  "releaseDate": "2026-09-25",
-  "version": "1.0.1",
+  "releaseDate": "2026-09-26",
+  "version": "1.1.0",
+  "supportingAssetsVersion": "1.0.1",
   "classification": "Public",
   "pbitPurviewLabelRetained": false,
   "pbitLabelNote": "Power BI sensitivity labels apply to PBIX files and are not retained in PBIT exports.",
   "report": {
     "pages": 9,
     "bookmarks": 39,
-    "measures": 117,
-    "glossaryRows": 117,
+    "measures": 137,
+    "glossaryRows": 137,
     "hiddenMeasuresDocumented": 6,
     "activePage": "Start Here",
     "headerAlignment": "Passed for all 9 pages"
@@ -21,9 +22,13 @@
     "fabricatedRefreshSeconds": 33.4,
     "populatedModelHealth": "Passed",
     "populatedPageVisualReview": "Passed for all 9 pages",
-    "glossarySynchronization": "117 measures, 117 unique definitions, zero stale rows",
-    "historyGuidance": "All available Cowork history from the first available week; target at least 12 covered weeks when available",
+    "glossarySynchronization": "137 measures, 137 unique definitions, zero stale rows",
+    "historyGuidance": "All reliable Cowork history available from the first covered week, up to 12 weeks",
     "customerFacingLegacyTerminology": "None",
+    "adoptionFunnel": "Total population to active users to active in most weeks to Cowork super users",
+    "departmentPortfolio": "Passed for adoption breadth, credit exposure, momentum, concentration, and customer-modeled cost",
+    "customerCostInputDefault": 0.01,
+    "pbitParameterDialogValidation": "Passed for both connection editions",
     "privacyScan": "Passed",
     "pbirValidation": "Passed with 4 remote-schema availability warnings",
     "storyboardSlides": 24,
@@ -37,18 +42,18 @@
   "artifacts": [
     {
       "path": "CoworkSuperUser - Direct Query.pbit",
-      "bytes": 615419,
-      "sha256": "26DF2EBF5B80FB7BF3395F4BAF97986FAC30D79A6C1C154C99BA3C82D0E20569"
+      "bytes": 631430,
+      "sha256": "21E04BD5E2B980E4FA46A150514DB4D2C7938E4DC3160CD2612FBBCFC264386C"
     },
     {
       "path": "CoworkSuperUser - Optimized Export.pbit",
-      "bytes": 617210,
-      "sha256": "410B793A70944D7A063740EF04DE429876557BAEF26512CF39CD9F7933AB0224"
+      "bytes": 633902,
+      "sha256": "DBE4D96E30C5C8F6577F81C7C99AD9703C971B4A53298669FD174E20DF73A7BA"
     },
     {
       "path": "CoworkSuperUser Interpretation Storyboard.pptx",
-      "bytes": 2083328,
-      "sha256": "E315203F518CF753BD009D3516DD6FB2C77A8ED6C49EF515E52FA515F64B1875"
+      "bytes": 1933468,
+      "sha256": "987C80A083CC390C883432D32ED73F1EAA670EE7C1AAA9B3A57A0EBF7C040165"
     },
     {
       "path": "media/CoworkSuperUser-Walkthrough.mp4",
