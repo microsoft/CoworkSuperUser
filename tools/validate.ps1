@@ -139,6 +139,79 @@ foreach ($term in $legacyTerms) {
     }
 }
 
+$setupDocuments = @(
+    (Join-Path $RepositoryRoot "README.md"),
+    (Join-Path $RepositoryRoot "SETUP.md"),
+    (Join-Path $RepositoryRoot "docs\QUERY_SETUP.md")
+)
+$setupText = ($setupDocuments | ForEach-Object {
+    Get-Content $_ -Raw
+}) -join "`n"
+$requiredSetupInstructions = @(
+    "Person Query",
+    "Group by",
+    "Week",
+    "Person ID",
+    "Organization",
+    "Function",
+    "Level",
+    "manager",
+    "Collaboration hours",
+    "Active connected hours",
+    "Email hours",
+    "Chat hours",
+    "Meeting hours",
+    "Unscheduled call hours",
+    "After-hours collaboration",
+    "Weekend collaboration hours",
+    "Collaboration span",
+    "Collaboration activity",
+    "Collaboration network",
+    "Collaboration by day of the week",
+    "Internal network size",
+    "External network size",
+    "Strong ties",
+    "Diverse ties",
+    "Network outside organization",
+    "ServiceName = Cowork",
+    "Session count",
+    "Total Copilot Credits used",
+    "Spending policy limit",
+    "User limit",
+    "Partition Identifier",
+    "Person Query Identifier",
+    "Consumption Query Identifier",
+    "Consumption Dashboard",
+    "Export by day",
+    "PersonServiceCreditsMetrics.csv",
+    "global partition",
+    "Organizational account",
+    "OAuth2",
+    "Data source settings",
+    "privacy",
+    "gateway"
+)
+foreach ($instruction in $requiredSetupInstructions) {
+    if (-not $setupText.Contains($instruction, [StringComparison]::OrdinalIgnoreCase)) {
+        throw "Public setup documentation is incomplete: $instruction"
+    }
+    if (
+        $optimizedExpressions -notmatch "PersonServiceCreditsMetrics\.csv" -or
+        $optimizedExpressions -notmatch "TotalCreditsUsed"
+    ) {
+        throw "Optimized Export does not support the official Consumption Dashboard export schema."
+    }
+}
+if ($setupText -match "(?i)(last\s+6\s+months|rolling\s+last\s+6|six\s+months)") {
+    throw "Public setup documentation still requests a fixed six-month period."
+}
+$publicReadme = Get-Content (Join-Path $RepositoryRoot "README.md") -Raw
+foreach ($privateValidationCount in @("43,440", "3,620", "81,798")) {
+    if ($publicReadme.Contains($privateValidationCount, [StringComparison]::Ordinal)) {
+        throw "Tenant-derived validation count remains in README: $privateValidationCount"
+    }
+}
+
 $manifestPath = Join-Path $RepositoryRoot "validation\release-manifest.json"
 $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -152,7 +225,33 @@ foreach ($artifact in $manifest.artifacts) {
         throw "Release hash mismatch: $($artifact.path)"
     }
 
-    if ([IO.Path]::GetExtension($path) -ne ".pbit") {
+    $extension = [IO.Path]::GetExtension($path)
+    if ($extension -eq ".pptx") {
+        $signature = [IO.File]::ReadAllBytes($path)[0..3]
+        if (
+            $signature[0] -ne 0x50 -or
+            $signature[1] -ne 0x4B -or
+            $signature[2] -ne 0x03 -or
+            $signature[3] -ne 0x04
+        ) {
+            throw "PPTX is not an unprotected Open XML package: $($artifact.path)"
+        }
+        $presentation = [System.IO.Compression.ZipFile]::OpenRead($path)
+        try {
+            if (
+                -not $presentation.GetEntry("[Content_Types].xml") -or
+                -not $presentation.GetEntry("ppt/presentation.xml")
+            ) {
+                throw "PPTX package structure is incomplete: $($artifact.path)"
+            }
+        }
+        finally {
+            $presentation.Dispose()
+        }
+        continue
+    }
+
+    if ($extension -ne ".pbit") {
         continue
     }
     $archive = [System.IO.Compression.ZipFile]::OpenRead($path)
