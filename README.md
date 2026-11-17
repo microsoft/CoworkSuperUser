@@ -1,5 +1,7 @@
 # Cowork Super User Report
 
+> **Export is now enabled for admins and analysts.**
+
 **Find out who drives your Cowork spend, what they do differently, and where the credits are going next.**
 
 Cowork usage grows fast and unevenly. A small group of people usually consumes most of the credits, scheduled automations run in the background, and organization-wide averages hide all of it. This Power BI template turns your Viva Insights Cowork export into a report that leaders can act on in a 20-minute review.
