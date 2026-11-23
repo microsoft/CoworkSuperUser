@@ -6,6 +6,18 @@
 
 Cowork usage grows fast and unevenly. A small group of people usually consumes most of the credits, scheduled automations run in the background, and organization-wide averages hide all of it. This Power BI template turns your Viva Insights Cowork export into a report that leaders can act on in a 20-minute review.
 
+## Download CoworkSuperUserV2
+
+**[Download the latest Power BI template](https://github.com/microsoft/CoworkSuperUser/raw/main/CoworkSuperUser.pbit)**
+
+CoworkSuperUserV2 supports both `cowork*` and
+`PersonCoworkActivityMetrics*` usage exports. The `people*` /
+`PeopleMetaData*` organizational file is now optional, and the report accepts
+either `Function` or `FunctionType`.
+
+The canonical download remains named `CoworkSuperUser.pbit` so existing
+customer links continue to work. It contains the validated V2 template.
+
 ![CoworkSuperUser report tour: Overview, Cost Concentration, Trends, Group Breakdown, Value modeling, Share Shift, Deep Exploration, Metric Glossary and Category assumptions, shown with synthetic data](assets/CoworkSuperUser-sample.gif)
 
 > Try it now: open the template, point it at the [`sample-data`](sample-data) folder, and refresh. The sample is fully synthetic: 250 fictional people across 10 teams (Sales, Marketing, HR, IT, and more) over 18 weeks, in the same layout as a real export. It's the data in the tour above.
@@ -68,7 +80,7 @@ Go to [aka.ms/copilotdashboard](https://aka.ms/copilotdashboard) > **Consumption
 
 ### 3. Open the template and refresh
 
-Open [`CoworkSuperUser.pbit`](CoworkSuperUser.pbit) in Power BI Desktop. When it asks for **DataFolder**, paste the path of the extracted folder **without quotes**. A local folder or a SharePoint folder URL both work. Then select **Load**.
+Open the latest [`CoworkSuperUserV2` template](CoworkSuperUser.pbit) in Power BI Desktop. When it asks for **DataFolder**, paste the path of the extracted folder **without quotes**. A local folder or a SharePoint folder URL both work. Then select **Load**.
 
 That's it. Start on **Overview**.
 
@@ -84,7 +96,7 @@ Need the column details or troubleshooting help? See [docs/SETUP.md](docs/SETUP.
 
 | Path | Contents |
 |---|---|
-| `CoworkSuperUser.pbit` | The Power BI template, with no data included |
+| `CoworkSuperUser.pbit` | The latest CoworkSuperUserV2 Power BI template, with no data included |
 | `sample-data/` | Synthetic `cowork` and `people` files you can try the template on |
 | `assets/` | The report tour GIF |
 | `docs/` | Setup and data contract, troubleshooting, and the interpretation guide (Markdown and slides) |
