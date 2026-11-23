@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased - 2026-11-23
+
+- Updated the canonical template to support both `cowork*` and
+	`PersonCoworkActivityMetrics*` usage export names.
+- Made the `people*` / `PeopleMetaData*` organizational file optional. When it
+	is absent, the report retains usage IDs and uses safe organizational defaults.
+- Made `Organization`, `Function` / `FunctionType`, and `IsCopilotLicensed`
+	optional while continuing to require `PeopleHistoricalId` when a people file
+	is supplied.
+- Preserved all report pages, visuals, measures, relationships, formatting,
+	bookmarks, navigation, and existing selector behavior.
+- Validated exact package preservation, strict metadata parsing, an acyclic
+	query graph, and 47 fabricated native Power Query assertions.
+
 ## Unreleased - 2026-10-28
 
 - Replaced the canonical template with the supplied `Cowork Super User V1.pbit`

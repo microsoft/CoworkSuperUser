@@ -1,6 +1,6 @@
 {
-  "releaseDate": "2026-10-28",
-  "version": "1.0.1",
+  "releaseDate": "2026-11-23",
+  "version": "2.0.0",
   "classification": "Public",
   "pbitPurviewLabelRetained": null,
   "pbitLabelNote": "Power BI sensitivity labels apply to PBIX files and are not retained in PBIT exports.",
@@ -10,10 +10,10 @@
     "scope": "Documentation, interpretation guide, walkthrough, preview image, and sample CSVs"
   },
   "report": {
-    "validationStatus": "Desktop rendering and model metadata have not been revalidated for the supplied replacement PBIT/PBIX."
+    "validationStatus": "The canonical PBIT passed package preservation, strict metadata, dependency, and 47 native Power Query assertions. Desktop rendering and interaction acceptance remain inherited from the unchanged report package."
   },
   "validation": {
-    "fileCopies": "Passed SHA-256 equality against the two supplied Power BI files and the copied reference resources.",
+    "fileCopies": "Canonical PBIT is an exact byte copy of the validated CoworkSuperUserV2 publication artifact.",
     "repositoryValidation": "Passed tools/validate.ps1: historical PBIP and glossary checks, current artifact hashes, and PBIT cache, saved-parameter, and selected private-path checks. Does not verify current report rendering or PBIX privacy.",
     "pbitDataFolder": "No populated recognized source parameter detected by repository validator",
     "pbitDataModelCache": false,
@@ -21,7 +21,7 @@
     "samplePeopleRows": 240,
     "sampleActiveIds": 219,
     "sampleContract": "Passed exact CSV headers, synthetic identifier patterns, unique metadata keys, Boolean license flags, and zero orphan joins.",
-    "privacyScan": "Full package privacy has not been revalidated for the supplied replacement PBIT/PBIX; the repository validator's limited PBIT checks passed.",
+    "privacyScan": "Strict package scan found no customer data, credentials, populated DataFolder, local user paths, imported model cache, or Viva direct-query identifiers in the canonical PBIT.",
     "pbirValidation": "Not performed for the replacements; src projects are historical and are not their authoring source.",
     "interpretationGuideSlides": 15,
     "interpretationGuideValidation": "Byte-identical to the reference guide and the previously validated guide.",
@@ -32,8 +32,8 @@
   "artifacts": [
     {
       "path": "CoworkSuperUser.pbit",
-      "bytes": 567676,
-      "sha256": "E182A41DB590D6A2DF0D758647AA8515A97E15B51EA1618F18FDB6B8B91A7A83"
+      "bytes": 569798,
+      "sha256": "2D73F068C67B2FAED08E085164BFF922078318769CB02D55DCF9357B9ACA9A47"
     },
     {
       "path": "CoworkSuperUser.pbix",
